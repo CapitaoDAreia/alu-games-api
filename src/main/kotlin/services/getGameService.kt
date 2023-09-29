@@ -10,7 +10,7 @@ fun getGameService(id: String): Game {
     val response: HttpResponse<String> = sharkApiProvider("https://www.cheapshark.com/api/1.0/games?id=$id")
 
     if (response.statusCode() == 404){
-        throw Exception("Game not found!")
+        println("Game not found!")
     }
 
     val gson = Gson()

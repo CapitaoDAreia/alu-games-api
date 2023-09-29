@@ -1,11 +1,14 @@
 package domain.entities
 
 import java.time.LocalDate
+import java.util.Scanner
 import kotlin.random.Random
 
-data class Gamer(var name: String, var email: String, val birthDate: LocalDate, var user: String) {
+data class Gamer(var name: String, var email: String, val birthDate: String, var user: String) {
     var id: String? = null
         private set
+
+    val searchedGames = mutableListOf<Game>()
 
     init {
         this.generateId()
@@ -35,5 +38,20 @@ data class Gamer(var name: String, var email: String, val birthDate: LocalDate, 
 
     override fun toString(): String {
         return "Gamer email: ${this.email}, user: ${this.user}"
+    }
+
+    companion object{
+        fun createGamer(scanner: Scanner): Gamer {
+            println("Type your name")
+            val name = scanner.nextLine();
+            println("Type your email")
+            val email = scanner.nextLine();
+            println("Type your birthDate (dd/mm/yyyy)")
+            val birthDate = scanner.nextLine();
+            println("Type your username")
+            val userName = scanner.nextLine();
+
+            return Gamer(name, email, birthDate, userName)
+        }
     }
 }
