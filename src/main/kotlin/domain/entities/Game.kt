@@ -5,7 +5,7 @@ class Game(
     private var thumb: String,
 ) {
 
-    private val description = ""
+    private var description = ""
     override fun toString(): String {
         return "Game: '$title', Cover: '$thumb', Title: '$description')"
     }
