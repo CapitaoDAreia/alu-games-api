@@ -1,8 +1,8 @@
 package domain.entities
 
 class Game(
-    private var title: String,
-    private var thumb: String,
+    var title: String,
+    var thumb: String,
 ) {
 
     private var description = ""

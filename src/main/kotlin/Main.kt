@@ -1,6 +1,6 @@
-import domain.entities.Game
 import domain.entities.Gamer
 import services.getGameService
+import utils.parseToAge
 import java.util.Scanner
 
 fun main() {
@@ -10,6 +10,7 @@ fun main() {
 
     val gamer = Gamer.createGamer(scanner)
     println("You're in, ${gamer.name}!")
+    println("You are ${gamer.birthDate.parseToAge()} years old")
 
     do {
         println("Type an game ID")
@@ -27,6 +28,7 @@ fun main() {
     } while (response.equals("Y", true))
 
     println("Searched games:")
-    gamer.searchedGames.forEach { println(it) }
-
+    gamer.searchedGames
+        .sortedBy {it.title}
+        .forEach { println(it) }
 }
