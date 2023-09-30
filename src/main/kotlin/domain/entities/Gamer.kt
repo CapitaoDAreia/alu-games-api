@@ -12,6 +12,8 @@ data class Gamer(var name: String, var email: String, val birthDate: String, var
 
     val accumulatedRents = mutableListOf<Rent>()
 
+    var plano: SeparatePlan = SeparatePlan("LOW")
+
     init {
         this.generateId()
         this.validateEmail()
