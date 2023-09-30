@@ -1,16 +1,13 @@
 package domain.entities
 
-import java.time.LocalDate
 import java.time.Period
 
 data class Rent(
     val gamer: Gamer,
     val game: Game,
-    val initialDate: LocalDate,
-    val finalDate: LocalDate
+    val period: domain.entities.Period
 ){
-    private val rentValue = game.price * Period.between(initialDate, finalDate).days
-
+    private val rentValue = game.price * period.periodInDays
 
     override fun toString(): String {
         return "${gamer.name} has rent ${game.title} for price: ${this.rentValue}"

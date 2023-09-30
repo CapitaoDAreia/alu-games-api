@@ -35,4 +35,10 @@ fun main() {
 
     val gamers = getGamerService()
     println(gamers)
+
+//    val gamer = getGamerService().get(1)
+//    val game = getGameService("150")
+//    val period = Period(LocalDate.now(), LocalDate.now().plusDays(7))
+//    val rent = gamer.rentGame(game, period)
+//    println(rent.toString())
 }

@@ -38,8 +38,8 @@ data class Gamer(var name: String, var email: String, val birthDate: String, var
         if(this.name.isBlank()) throw Exception("invalid name")
     }
 
-    private fun rentGame(game: Game, initialDate: LocalDate, finalDate: LocalDate): Rent{
-        val rent = Rent(this, game, initialDate, finalDate)
+    fun rentGame(game: Game, period: Period): Rent{
+        val rent = Rent(this, game, period)
         this.accumulatedRents.add(rent)
         return rent
     }
