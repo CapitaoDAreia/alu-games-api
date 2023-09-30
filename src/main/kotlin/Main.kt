@@ -29,6 +29,6 @@ fun main() {
 
     println("Searched games:")
     gamer.searchedGames
-        .sortedBy {it.title}
+        .sortedBy { it.title }
         .forEach { println(it) }
 }
