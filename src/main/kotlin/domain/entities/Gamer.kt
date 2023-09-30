@@ -10,6 +10,8 @@ data class Gamer(var name: String, var email: String, val birthDate: String, var
 
     val searchedGames = mutableListOf<Game>()
 
+    val accumulatedRents = mutableListOf<Rent>()
+
     init {
         this.generateId()
         this.validateEmail()
@@ -34,6 +36,12 @@ data class Gamer(var name: String, var email: String, val birthDate: String, var
 
     private fun validateName(){
         if(this.name.isBlank()) throw Exception("invalid name")
+    }
+
+    private fun rentGame(game: Game): Rent{
+        val rent = Rent(this, game)
+        this.accumulatedRents.add(rent)
+        return rent
     }
 
     override fun toString(): String {
