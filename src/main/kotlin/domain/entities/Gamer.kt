@@ -36,21 +36,27 @@ data class Gamer(var name: String, var email: String, val birthDate: String, var
         throw Exception("invalid email: ${this.email}")
     }
 
-    private fun validateName(){
-        if(this.name.isBlank()) throw Exception("invalid name")
+    private fun validateName() {
+        if (this.name.isBlank()) throw Exception("invalid name")
     }
 
-    fun rentGame(game: Game, period: Period): Rent{
+    fun rentGame(game: Game, period: Period): Rent {
         val rent = Rent(this, game, period)
         this.accumulatedRents.add(rent)
         return rent
+    }
+
+    fun gamesInAMonth(month: Int): List<Game> {
+        return accumulatedRents
+            .filter { rent -> rent.period.initialDate.monthValue == month }
+            .map { rent -> rent.game }
     }
 
     override fun toString(): String {
         return "Gamer email: ${this.email}, user: ${this.user}"
     }
 
-    companion object{
+    companion object {
         fun createGamer(scanner: Scanner): Gamer {
             println("Type your name")
             val name = scanner.nextLine();
